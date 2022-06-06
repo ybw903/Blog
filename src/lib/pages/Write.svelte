@@ -1,19 +1,26 @@
 <script lang="ts">
-
+    import {push} from 'svelte-spa-router'
+    import {posts} from '../store/store';
+    let title;
+    let content;
+    const onBtnClick = ()=> {
+        posts.update(prev => [...prev, {title: title, content: content}])
+        push('/');
+    }
 </script>
 
 <section class="Wrapper">
     <div class="Title-Input">
         <label for="Title">제목</label>
-        <input type="text" name="Title"/>
+        <input type="text" name="Title" bind:value={title}/>
 
     </div>
     <div class="Content-Input">
         <label for="Content">내용</label>
-        <textarea name="Content" rows="5" cols="33"/>
+        <textarea name="Content" rows="5" cols="33" bind:value={content}/>
     </div>
     <div class="Btn-Box">
-        <button>저장</button>
+        <button on:click={onBtnClick}>저장</button>
     </div>
 </section>
 

@@ -1,12 +1,11 @@
 <script lang="ts">
-import PostCard from "./PostCard.svelte";
-
-    let dummyData = [{title: 'test1', content: 'test1'},{title: 'test2', content: 'test2'}]
+    import PostCard from "./PostCard.svelte";
+    import {posts} from '../store/store'
 </script>
 <section>
     <div class="Posts-Container">
-        {#each dummyData as data, index}
-            <PostCard title={data.title} content={data.content}/>
+        {#each $posts as post, index}
+            <PostCard title={post.title} content={post.content}/>
         {/each}
     </div>
 </section>

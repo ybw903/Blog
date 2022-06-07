@@ -5,7 +5,7 @@
 <section>
     <div class="Posts-Container">
         {#each $posts as post, index}
-            <PostCard title={post.title} content={post.content}/>
+            <PostCard post={post}/>
         {/each}
     </div>
 </section>

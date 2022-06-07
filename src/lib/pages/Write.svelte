@@ -1,10 +1,11 @@
 <script lang="ts">
     import {push} from 'svelte-spa-router'
-    import {posts} from '../store/store';
+    import {posts, postId} from '../store/store';
     let title;
     let content;
     const onBtnClick = ()=> {
-        posts.update(prev => [...prev, {title: title, content: content}])
+        posts.update(prev => [...prev, {title: title, content: content, id: $postId}]);
+        postId.update(prev => prev + 1);
         push('/');
     }
 </script>
